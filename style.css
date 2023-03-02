@@ -1,0 +1,59 @@
+body {
+    color: darkgrey;
+    background: url('public/images/library.jpg') no-repeat center;
+    background-color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+article {
+    font-size: 22px;
+    text-align: justify;
+}
+
+img {
+    border-radius: 10px;
+}
+
+#content {
+    background-color: #272B30;
+    margin: 0;
+    padding: 0;
+    min-height: 84vh;
+}
+
+#whiteMarkUp {
+    color: white;
+    font-weight: bold;
+}
+
+#slogan {
+    font-size: 20px;
+}
+
+#footer {
+    background-color: #212529;
+    min-height: 4vh;
+}
+
+#footer p {
+    padding: 1em;
+}
+
+.perso_shadow{box-shadow : 0px 2px 15px black;}
+
+.mobile{
+
+    background:url(public/images/construction.jpg)center no-repeat;
+    background-size: cover;
+}
+
+.mobile #content{
+
+    background-color:white;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+}

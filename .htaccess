@@ -1,0 +1,48 @@
+# Mode réécriture d'URL
+RewriteEngine On
+
+# Conditions qui empêchent  de lister les fichiers ou les dossiers
+# depuis la barre d'URL du navigateur
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Réécriture d'URL
+RewriteRule ^(.*)$ index.php?page=$1
+
+# Pages d'erreurs : 
+ErrorDocument 301 /books/index.php?page=error301
+ErrorDocument 302 /books/index.php?page=error302
+ErrorDocument 400 /books/index.php?page=error400
+ErrorDocument 401 /books/index.php?page=error401
+ErrorDocument 402 /books/index.php?page=error402
+ErrorDocument 403 /books/index.php?page=error403
+ErrorDocument 404 /books/index.php?page=error404
+ErrorDocument 405 /books/index.php?page=error405
+ErrorDocument 500 /books/index.php?page=error500
+ErrorDocument 505 /books/index.php?page=error505
+
+# Interdire le listing des dossiers 
+Options All -Indexes
+
+# Masquer les informations serveur
+ServerSignature Off
+
+# Suivre les liens symboliques
+Options +FollowSymLinks
+
+# Forcer l'encodage par défaut des fichiers
+AddDefaultCharset UTF-8
+
+# Protection XSS, clickJacking et Mime-Type
+<ifModule mod_headers.c>
+Header set X-XSS-Protection "1; mode=block"
+Header always append X-Frame-Options SAMEORIGIN
+Header set X-Content-Type-Options: "nosniff”
+</ifModule>
+
+# Protection contre les injections de fichiers
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
+RewriteRule .* - [F]
