@@ -10,7 +10,7 @@
     <div class="row">
         <div class="text-center">
             <h1 class="mb-0"><span id="whiteMarkUp">Biblio</span>thèque de poche</h1>
-            <p id="slogan">pour accéder aux <span id="whiteMarkUp">idées</span> des meilleurs livres</p>
+            <p id="slogan">accédez aux <span id="whiteMarkUp">idées</span> des meilleurs livres</p>
         </div>
     </div>
 
